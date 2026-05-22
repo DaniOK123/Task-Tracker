@@ -14,12 +14,6 @@ def overwiev():
     print('Click 2 to delete something to your task')
     print('Click 0 to exit')
 
-
-    
-
-
-def add():
-
     while True:
 
         try:
@@ -28,27 +22,37 @@ def add():
             print('It has to be a number') 
             continue  
 
-        if decision == 1:
-            nuova_attività = input('cosa vuoi aggiungere: ')
-            dati["studio"].append({"materia" : nuova_attività})
-
-            with open("task.json", "w") as f:
-                json.dump(dati, f, indent = 4, ensure_ascii = False)
-
-            print(f'Nuova materia {nuova_attività} aggiunta!')
-
-        elif decision == 0:
+        
+        if decision == 0:
             print('Goodbye')
             break   
-
-        elif decision != 1 or decision != 2:
+        elif decision != 1 and decision != 2:
             print('Number has to be 1 or 2')
-            continue    
+            continue 
+        else:
+            break 
+
+    return decision
+
+    
+
+
+def add(decision):
+
+    if decision == 1:
+        nuova_attività = input('cosa vuoi aggiungere: ')
+        dati["studio"].append({"materia" : nuova_attività})
+
+        with open("task.json", "w") as f:
+            json.dump(dati, f, indent = 4, ensure_ascii = False)
+
+        print(f'Nuova materia {nuova_attività} aggiunta!')
+
             
         
         
         
-        return decision
+        
         
 
 
@@ -75,6 +79,6 @@ def delete(decision):
 
 
 
-overwiev()
-scelta = add()
+scelta = overwiev()
+add(scelta)
 delete(scelta)
