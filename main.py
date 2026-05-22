@@ -74,7 +74,6 @@ def delete(decision):
 
 
 
-
 overwiev()
 scelta = add()
 delete(scelta)
